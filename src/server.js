@@ -1,8 +1,8 @@
+dotenv.config();
 import express from "express";
 import dotenv from "dotenv";
 import UserFormRoutes from './routes/form.route.js';
 
-dotenv.config();
 
 const app = express();
 
