@@ -1,4 +1,5 @@
 import Form from "../db/models/Form.js";
+import { transporter } from "../services/emailService.js";
 
 export const getForms = async (_req, res, next) => {
    try {
@@ -22,7 +23,7 @@ export const getForms = async (_req, res, next) => {
 
 export const saveForm = async (req, res, next) => {
    try {
-    console.log(req.body);
+      console.log(req.body);
       const { name, email, phoneNumber, dateOfBirth } = req.body;
       const form = new Form({
          name,
@@ -32,6 +33,22 @@ export const saveForm = async (req, res, next) => {
       });
 
       await form.save();
+
+      const mailOptions = {
+         from: process.env.SMTP_EMAIL,
+         to: email,
+         subject: "You are registered",
+         text: "Thanks for registering on wedigit your details has been saved",
+      };
+
+      // Send the email
+      transporter.sendMail(mailOptions, (error, info) => {
+         if (error) {
+            console.error("Error sending email:", error);
+         } else {
+            console.log("Email sent:", info.response);
+         }
+      });
 
       const responseData = {
          message: "Form saved successfully",
