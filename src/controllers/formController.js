@@ -1,9 +1,10 @@
 import Form from "../db/models/Form.js";
 import { transporter } from "../services/emailService.js";
 
-export const getForms = async (_req, res, next) => {
+export const getForms = async (req, res, next) => {
    try {
-      const forms = await Form.find();
+      const { email } = req.body;
+      const forms = await Form.find({email});
       if (forms) {
          console.log(forms);
          const responseData = {
