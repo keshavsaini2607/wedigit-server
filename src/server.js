@@ -6,13 +6,13 @@ import UserFormRoutes from "./routes/form.route.js";
 import PhoneRoutes from "./routes/phone.route.js";
 import { connectDB } from "./db/index.js";
 
-const allowedOrigins = ['http://localhost:5173', 'https://wedigit-client-uyd4.vercel.app/'];
+const allowedOrigins = ['http://localhost:5173', 'https://wedigit-client-uyd4.vercel.app'];
 
 const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: "*",
 }));
 //Database connection
 connectDB();
