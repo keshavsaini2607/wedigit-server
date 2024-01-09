@@ -6,7 +6,7 @@ import UserFormRoutes from "./routes/form.route.js";
 import PhoneRoutes from "./routes/phone.route.js";
 import { connectDB } from "./db/index.js";
 
-const allowedOrigins = ['http://localhost:5173', 'https://example.com'];
+const allowedOrigins = ['http://localhost:5173', 'https://wedigit-server-dc41902ef5eb.herokuapp.com/'];
 
 const app = express();
 app.use(express.json());
