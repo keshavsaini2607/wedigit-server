@@ -54,6 +54,7 @@ export const saveForm = async (req, res, next) => {
          message: "Form saved successfully",
          form: form,
          status: 200,
+         success: true
       };
 
       res.json(responseData);
