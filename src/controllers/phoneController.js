@@ -15,6 +15,8 @@ export const getOtp = async (req, res, next) => {
          })
          .then(async () => {
             res.json({ success: true, message: "OTP sent successfully" });
+            const otpExists = await Phone.findOne({ phoneNumber: phoneNumber });
+            if (otpExists) await Phone.deleteOne({ _id: otpExists._id });
             const otpData = new Phone({
                phoneNumber,
                otp,
@@ -35,6 +37,7 @@ export const verifyOtp = async (req, res, next) => {
    try {
       const { phoneNumber, otp } = req.body;
       const otpData = await Phone.findOne({ phoneNumber: phoneNumber });
+      console.log({otpData});
 
       if (otpData.otp !== otp) {
          res.json({

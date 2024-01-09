@@ -4,7 +4,6 @@ import nodemailer from "nodemailer";
 
 const smtpEmail = process.env.SMTP_EMAIL;
 const smtpPassword= process.env.SMTP_PASSWORD;
-console.log({smtpEmail})
 
 
 export const transporter = nodemailer.createTransport({
