@@ -10,7 +10,6 @@ const formSchema = new Schema({
    email: {
       type: String,
       required: true,
-      unique: [true, 'Email already exists. Please check and try again'],
       trim: true,
       lowercase: true,
       match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
